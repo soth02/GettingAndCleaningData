@@ -36,6 +36,8 @@ allData<-cbind(combinedSubjectData,combinedXData,combinedYData)
 featureMeanStdCols<-grep("mean\\(\\)|std\\(\\)",features)
 combinedMeanStdData<-allData[,c(featureMeanStdCols,563,564)] #hacked in names of act_ID, activity
 
+write.table(combinedMeanStdData, file="../mergedDataSet.txt", col.names=TRUE, row.names=FALSE, sep=",")
+
 #save RAM, reomve unneeded variables
 #rm(xTest,xTrain,subjectTest,yTest,yTrain,subjectTrain,combinedSubjectData,combinedXData,combinedYData,allData)
 rm(xTest,xTrain,subjectTest,yTest,yTrain,subjectTrain)
@@ -45,3 +47,6 @@ numSubjects <- nrow(unique(combinedSubjectData))
 activities <- unique(combinedYData)
 numActivities <- nrow(activities)
 
+
+
+write.table(tidyData, file="../tidyDataSet.txt", col.names=TRUE, row.names=FALSE, sep=",")
